@@ -19,46 +19,88 @@ public class Main extends Application {
     List<Character> list = new ArrayList<>();
     TextField text;
 
+    public void caculateResult(){
+
+Conversion convert = new Conversion();
+convert.FunctionCall(list, text);
+
+
+
+    }
+
     EventHandler<MouseEvent> mouseClick = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent event) {
+
             if(event.getSource()==buttonArrNums [0]){
+                if (list.size()==0){
+                    list.add('(');
+                }
+
                 list.add('0');
+
                 updateText();
             }
             if(event.getSource()==buttonArrNums [1]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('1');
                 updateText();
             }
             if(event.getSource()==buttonArrNums [2]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('2');
                 updateText();
             }
             if(event.getSource()==buttonArrNums [3]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('3');
                 updateText();
             }
             if(event.getSource()==buttonArrNums [4]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('4');
                 updateText();
             }
             if(event.getSource()==buttonArrNums [5]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('5');
                 updateText();
             }
             if(event.getSource()==buttonArrNums [6]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('6');
                 updateText();
             }
             if(event.getSource()==buttonArrNums [7]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('7');
                 updateText();
             }
             if(event.getSource()==buttonArrNums [8]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('8');
                 updateText();
             }
             if(event.getSource()==buttonArrNums [9]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('9');
                 updateText();
             }
@@ -67,6 +109,7 @@ public class Main extends Application {
                 updateText();
             }
             if(event.getSource()==buttonArrFunc [1]){
+                list.add('+');////////////////////////////////testing since subtraction method is shit
                 list.add('-');
                 updateText();
             }
@@ -83,30 +126,57 @@ public class Main extends Application {
                 updateText();
             }
             if(event.getSource()==buttonArrFunc [5]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('s');
+                list.add('(');
                 updateText();
             }
-            if(event.getSource()==buttonArrFunc [6]){
+            if(event.getSource()==buttonArrFunc [6]){ //cos
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('c');
+                list.add('(');
                 updateText();
             }
-            if(event.getSource()==buttonArrFunc [7]){
+            if(event.getSource()==buttonArrFunc [7]){ //tan
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('t');
+                list.add('(');
                 updateText();
             }
-            if(event.getSource()==buttonArrFunc [8]){
-                list.add('c');
+            if(event.getSource()==buttonArrFunc [8]){ // cot need to edit the screen
+                if (list.size()==0){
+                    list.add('(');
+                }
+                list.add('o');
+                list.add('(');
                 updateText();
             }
             if(event.getSource()==buttonArrFunc [9]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('l');//ln
+                list.add('(');
                 updateText();
             }
             if(event.getSource()==buttonArrFunc [10]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('L');//Log
+                list.add('(');
                 updateText();
             }
             if(event.getSource()==buttonArrFunc [11]){
+                if (list.size()==0){
+                    list.add('(');
+                }
                 list.add('(');
                 updateText();
             }
@@ -115,28 +185,54 @@ public class Main extends Application {
                 updateText();
             }
             if(event.getSource()==buttonArrFunc [13]){
-                checkCaculation();
+                list.add(')');
+               // checkCaculation();
+                caculateResult();
             }
             if(event.getSource()==buttonArrFunc [14]){
                 list.clear();
+                updateText();
+            }
+            if(event.getSource()==buttonArrFunc [15]){
+                if (list.size()==0){
+                    list.add('(');
+                }
+                list.add('.');
+                updateText();
+            }
+            if(event.getSource()==buttonArrFunc [16]){
+                if (list.size()==0){
+                    list.add('(');
+                }
+                list.add('-');
                 updateText();
             }
         }
     };
 
 
- public void updateText(){
-     System.out.println(list.toString());
-  StringBuilder bobTheBuilder = new StringBuilder();
-  for (int i = 0 ; i<list.size(); i++){
-      bobTheBuilder.append(list.get(i));
-  }
+    public void updateText(){
+        System.out.println(list.toString());
+        StringBuilder bobTheBuilder = new StringBuilder();
+        for (int i = 1 ; i<list.size(); i++) { //converst from s or l ect using switch.
 
 
+            //this is for use of the addition method with subtraction
+            if (i+1 < list.size()){
+                if (list.get(i).equals('+')&&list.get(i+1).equals('-')){
+                    i++;
+                }
+                else if (list.get(i-1).equals('+')&&list.get(i).equals('-')){
+                    bobTheBuilder.append('-');
+                }
+            }
+             bobTheBuilder.append(list.get(i));
+        }
 
-     text.clear();
-     text.appendText(bobTheBuilder.toString());
- }
+            text.clear();
+
+        text.appendText(bobTheBuilder.toString());
+    }
 
 
     @Override
@@ -149,7 +245,7 @@ public class Main extends Application {
 
 
         GridPane gridFun = new GridPane();
-        buttonArrFunc = new Button[15];
+        buttonArrFunc = new Button[17];
 
         buttonArrFunc[0] = new Button("+");
         GridPane.setConstraints(buttonArrFunc[0], 1, 1);
@@ -181,8 +277,13 @@ public class Main extends Application {
         GridPane.setConstraints(buttonArrFunc[13], 4, 2);
         buttonArrFunc[14] = new Button("C");
         GridPane.setConstraints(buttonArrFunc[14], 4, 3);
+        buttonArrFunc[15] = new Button(".");
+        GridPane.setConstraints(buttonArrFunc[15], 4, 4);
 
-        for (int i = 0; i < 15; i++) {
+        buttonArrFunc[16] = new Button("NEG");
+        GridPane.setConstraints(buttonArrFunc[16], 1, 5);//////////Negation
+
+        for (int i = 0; i < 17; i++) {
             gridFun.getChildren().add(buttonArrFunc[i]);
             buttonArrFunc[i].setOnMouseClicked(mouseClick);
         }
@@ -230,28 +331,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public void caculateResult(){
 
-     
-
-
-
-    }
-    //hacked so it passes
-    //TODO:
-    public void checkCaculation(){
-     boolean pass = false;
-     if (list.contains("(")){
-         if (list.contains(")")){
-             pass = true;
-         }
-     }
-     //if(list.contains())
-     pass = true;
-     if (pass) {
-         caculateResult();
-     }
-    }
 
 
     public static void main(String[] args) {
