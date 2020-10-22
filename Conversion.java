@@ -1,4 +1,4 @@
-package sample;
+
 
 import java.util.*;
 import java.util.List;
@@ -6,10 +6,9 @@ import java.util.List;
 import javafx.scene.control.TextField;
 
 public class Conversion {
+
     private int lPren;
     private int rPren;
-    //Stack<String> stack;
-
 
     public void FunctionCall(List<Character> list, TextField txt) {
         List<String> strLst = listToString(list);
@@ -203,7 +202,6 @@ public class Conversion {
                 curr++;
             }
 
-
             int curr3 = 0;
             while (tempPop.size() > curr3) {
                 if (tempPop.get(curr3).equals("+")) {
@@ -262,7 +260,6 @@ public class Conversion {
             txt.appendText("Incorrect Expression");
         }
     }
-
 
     private void cos(String right, List<String> tempPop, int curr) {
 
@@ -384,7 +381,6 @@ public class Conversion {
         return run;
     }
 
-
     private List<String> listToString(List<Character> list) {
 
         List<String> strList = new ArrayList<>();
@@ -421,7 +417,7 @@ public class Conversion {
             if (list.get(i) == '-' || list.get(i) == '+' || list.get(i) == '*' ||
                     list.get(i) == '/' || list.get(i) == '(' || list.get(i) == ')' || list.get(i) == '^') {
 
-                //skips on the rare occation of a ++- operation (ie adding a neg)
+                //skips on the rare occasion of a ++- operation (ie adding a neg)
                 if (list.get(i) == '+' && list.get(i - 1) == '+') {
                 }
 

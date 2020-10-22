@@ -1,4 +1,4 @@
-package sample;
+
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -247,8 +247,7 @@ public class Main extends Application {
         text.clear();
         text.appendText(bobTheBuilder.toString());
     }
-
-
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -375,18 +374,16 @@ public class Main extends Application {
 
         buttonArrFunc[13] = new Button("=");
         GridPane.setConstraints(buttonArrFunc[13], 3, 5, 3, 6);
-
-
     }
 
     public void editButtons(Button[] button) {
 
 
         for (int i = 0; i < button.length; i++) {
-            button[i].setStyle("-fx-pref-width: 45; -fx-pref-height: 45; -fx-background-color: #525252; -fx-border-color: #414141; -fx-border-width: 3; -fx-text-fill: white");
+            button[i].setStyle("-fx-pref-width: 45; -fx-pref-height: 45; -fx-background-color: #525252;" +
+                    " -fx-border-color: #414141; -fx-border-width: 3; -fx-text-fill: white");
         }
     }
-
 
     public static void main(String[] args) {
         launch(args);
