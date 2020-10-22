@@ -246,8 +246,14 @@ public class Conversion {
             txt.clear();
 
             String stk = stack.toString();
+
             stk = stk.replace("[", "");
             stk = stk.replace("]", "");
+
+            //incorrect expression such as log(-100)
+            if (stk.equals("NaN")){
+                throw new Exception();
+            }
 
             txt.appendText(stk);
 
