@@ -247,11 +247,11 @@ public class Main extends Application {
         text.clear();
         text.appendText(bobTheBuilder.toString());
     }
-    
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        primaryStage.setTitle("Caculator");
+        primaryStage.setTitle("Calculator");
 
         buttonArrFunc = new Button[17];
         createOperatorButtons(buttonArrFunc);
